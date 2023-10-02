@@ -20,7 +20,7 @@ const VendorsDataProvider = ({ children }) => {
 			setIsLoading(true);
 			setIsError(null);
 			const response = await axios.get(`${BASE_URL}/vendors`);
-			setVendorData(response.data);
+			setVendorData(response.data.reverse());
 			setIsLoading(false);
 		} catch (err) {
 			setIsError(true);

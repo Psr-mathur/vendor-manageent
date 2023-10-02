@@ -32,7 +32,6 @@ const Modal = ({
 			const response = await axios.delete(
 				`${BASE_URL}/vendors/${data["_id"]}`
 			);
-			setVendorData(response.data);
 			setIsLoading(false);
 			toast("Deleted Succesfully.");
 		} catch (err) {
