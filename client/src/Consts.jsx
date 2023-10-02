@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:4000/api";
+// export const BASE_URL = "http://localhost:4000/api";
+export const BASE_URL = "https://vendorserver.onrender.com/api";
 
 export const convertToSendFormat = (data) => {
 	const { name, acn, bank, address1, address2, city, country, zip } = data;
