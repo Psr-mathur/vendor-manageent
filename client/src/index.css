@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	h1 {
+		@apply text-3xl;
+	}
+	h2 {
+		@apply text-2xl;
+	}
+	h3 {
+		@apply text-xl;
+	}
+	h4 {
+		@apply text-base;
+	}
+}
+
+@layer components {
+	/* .custom-input-style {
+		border-bottom: 2px solid;
+	} */
+	.custom-input-style:not(:focus):not(:placeholder-shown) {
+		border-bottom: 2px rgb(130, 250, 130) solid;
+	}
+	.custom-input-style:not(:focus):not(:placeholder-shown):invalid {
+		border-bottom: 2px rgb(248, 56, 56) solid;
+	}
+}
