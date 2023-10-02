@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import axios from "axios";
 import { BASE_URL, convertToSendFormat } from "../Consts";
 import { toast } from "react-toastify";
+import { VendorsContext } from "../contextapi/VendorsDataProvider";
 
 const inputConClasses =
 	"flex flex-col gap-2 my-2 p-2 bg-white w-[340px] sm:w-[480px]";
@@ -90,6 +91,7 @@ const Form = ({ usefor = "create", data = InitialFormState }) => {
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const { toggleVendors } = useContext(VendorsContext);
 
 	const SendToServer = async (data) => {
 		try {
@@ -108,6 +110,7 @@ const Form = ({ usefor = "create", data = InitialFormState }) => {
 				toast("Vendor Updated.");
 			}
 			// console.log(response.data);
+			toggleVendors();
 			setIsLoading(false);
 		} catch (err) {
 			toast.error("Some error! Please try later.");

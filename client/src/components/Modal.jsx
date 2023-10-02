@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../Consts";
 import { toast } from "react-toastify";
+import { VendorsContext } from "../contextapi/VendorsDataProvider";
 
 const InitialData = {
 	vendorName: "Jhon Doe",
@@ -24,6 +25,7 @@ const Modal = ({
 }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [iserror, setIsError] = useState(null);
+	const { toggleVendors } = useContext(VendorsContext);
 
 	const deleteData = async () => {
 		try {
@@ -33,6 +35,7 @@ const Modal = ({
 				`${BASE_URL}/vendors/${data["_id"]}`
 			);
 			setIsLoading(false);
+			toggleVendors();
 			toast("Deleted Succesfully.");
 		} catch (err) {
 			setIsError(true);
