@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "../Consts";
 import { toast } from "react-toastify";
 import { VendorsContext } from "../contextapi/VendorsDataProvider";
+import { Protect } from "../App";
 
 const InitialData = {
 	vendorName: "Jhon Doe",
@@ -93,29 +94,31 @@ const Modal = ({
 						</button>
 					</div>
 				) : (
-					<div className="z-50 p-4 flex flex-col items-center justify-center gap-2 min-w-[320px] max-w-2xl bg-white rounded-2xl">
-						<span className=" text-rose-400 font-semibold">
-							{isLoading
-								? "Deleting please wait.."
-								: "Are you Sure?"}
-						</span>
-						<div className=" flex gap-6 py-6">
-							<button
-								onClick={handleDelete}
-								disabled={isLoading}
-								className="px-3 py-2 text-slate-100 font-semibold hover:scale-110 active:scale-90 transition-all bg-rose-500 rounded"
-							>
-								{isLoading ? "wait.." : "Yes"}
-							</button>
-							<button
-								onClick={() => setOpenModal(false)}
-								disabled={isLoading}
-								className="px-3 py-2 text-slate-100 font-semibold hover:scale-110 active:scale-90 transition-all bg-slate-500 rounded"
-							>
-								No
-							</button>
+					<Protect>
+						<div className="z-50 p-4 flex flex-col items-center justify-center gap-2 min-w-[320px] max-w-2xl bg-white rounded-2xl">
+							<span className=" text-rose-400 font-semibold">
+								{isLoading
+									? "Deleting please wait.."
+									: "Are you Sure?"}
+							</span>
+							<div className=" flex gap-6 py-6">
+								<button
+									onClick={handleDelete}
+									disabled={isLoading}
+									className="px-3 py-2 text-slate-100 font-semibold hover:scale-110 active:scale-90 transition-all bg-rose-500 rounded"
+								>
+									{isLoading ? "wait.." : "Yes"}
+								</button>
+								<button
+									onClick={() => setOpenModal(false)}
+									disabled={isLoading}
+									className="px-3 py-2 text-slate-100 font-semibold hover:scale-110 active:scale-90 transition-all bg-slate-500 rounded"
+								>
+									No
+								</button>
+							</div>
 						</div>
-					</div>
+					</Protect>
 				)}
 			</div>
 			<div
